@@ -9,7 +9,7 @@ export default function Home() {
   const [periodo, setPeriodo] = useState('Mensual');
   // const [sueldoBruto, setSueldoBruto] = useState('');
   const [sueldoBruto, setSueldoBruto] = useState('10000');
-  const [incluirIMSS, setIncluirIMSS] = useState(true);
+  const [incluirIMSS, setIncluirIMSS] = useState(false);
   const [incluirSubsidio, setIncluirSubsidio] = useState(false);
   const [resultados, setResultado] = useState(null);
 
@@ -43,8 +43,8 @@ export default function Home() {
 
 
   useEffect(() => {
-    // Check if the input fields have been filled by the user and not by default
-    if (sueldoBruto !== '' && periodo !== '') {
+    // Check if the input fields have been filled by the user and not by default and its different from 0
+    if (sueldoBruto !== '' && sueldoBruto !== '0') {
       const sueldo = parseFloat(sueldoBruto);
       const result = calcularSueldoNeto(periodo, sueldo, incluirIMSS, incluirSubsidio);
       setResultado(result);
@@ -52,6 +52,8 @@ export default function Home() {
 
     
   }, [periodo, sueldoBruto, incluirIMSS, incluirSubsidio]);
+
+
 
 
 
@@ -122,10 +124,10 @@ export default function Home() {
               </div> */}
 
               <div className="input-group">
-                <label class="container_checkbox">
-                  <span class="label_checkbox">Incluir IMSS</span>
+                <label className="container_checkbox">
+                  <span className="label_checkbox">Incluir IMSS</span>
                   <input type="checkbox" checked={incluirIMSS} onChange={handleIncluirIMSSChange} />
-                  <div class="checkmark"></div>
+                  <div className="checkmark"></div>
                 </label>    
               </div>
             
@@ -147,13 +149,13 @@ export default function Home() {
 
             <ul>
 
-              <li>Limite inferior: <span class="resultado">${resultados && resultados.limiteInferior}</span></li>
-              <li>Excedente del límite inferior: <span class="resultado">${resultados && resultados.excedente}</span></li>
-              <li>Porcentaje sobre el excedente: <span class="resultado">{resultados && resultados.tasaISR}%</span></li>
-              <li>Impuesto marginal: <span class="resultado">${resultados && resultados.impuestoMarginal}</span></li>
-              <li>Cuota fija del impuesto: <span class="resultado"> ${resultados && resultados.cuotaFijaISR}</span></li>
-              <li>ISR: <span class="resultado">${resultados && resultados.impuestoISR}</span></li>
-              <li>IMSS: <span class="resultado">${resultados && resultados.impuestoIMSS}</span></li>
+              <li>Limite inferior: <span className="resultado">${resultados && resultados.limiteInferior}</span></li>
+              <li>Excedente del límite inferior: <span className="resultado">${resultados && resultados.excedente}</span></li>
+              <li>Porcentaje sobre el excedente: <span className="resultado">{resultados && resultados.tasaISR}%</span></li>
+              <li>Impuesto marginal: <span className="resultado">${resultados && resultados.impuestoMarginal}</span></li>
+              <li>Cuota fija del impuesto: <span className="resultado"> ${resultados && resultados.cuotaFijaISR}</span></li>
+              <li>ISR: <span className="resultado">${resultados && resultados.impuestoISR}</span></li>
+              <li>IMSS: <span className="resultado">${resultados && resultados.impuestoIMSS}</span></li>
 
             </ul>
         </div>

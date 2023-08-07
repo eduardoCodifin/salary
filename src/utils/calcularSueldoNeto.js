@@ -1,5 +1,19 @@
 // Función para calcular el sueldo neto en México
 export default function calcularSueldoNeto(periodo, sueldoBruto, incluirIMSS, incluirSubsidio) {
+
+
+  if (sueldoBruto === 0) {
+    return {
+      sueldoNeto: 0,
+      limiteInferior: 0,
+      excedente: 0,
+      tasaISR: 0,
+      impuestoMarginal: 0,
+      cuotaFijaISR: 0,
+      impuestoISR: 0,
+      impuestoIMSS: 0,
+    };
+  }
  
 
 const tablaISR = [
@@ -25,20 +39,7 @@ const tablaISR = [
     sueldoBruto = parseFloat(sueldoBruto);
 
   
-    // Realizar cálculos según el período seleccionado
-    switch (periodo) {
-      case 'Semanal':
-        sueldoBruto = sueldoBruto / 4;
-        break;
-      case 'Quincenal':
-        sueldoBruto  = sueldoBruto / 2;
-        break;
-      case 'Mensual':
-        // No es necesario realizar cambios al sueldoBruto
-        break;
-      default:
-        return { error: 'Periodo seleccionado no válido' };
-    }
+  
   
     // Calcular ISR
     let ingresoGravable = sueldoBruto;
@@ -122,24 +123,14 @@ const tablaISR = [
           break;
         }
       }
-        // Format numbers with commas
+
+
+   // Format numbers with commas
   const formatNumber = (number) => {
     return number.toLocaleString('en', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
   };
 
-
   
-    // return {
-    //   limiteInferior: formatNumber(taxBracket.limiteInferior),
-    //   excedente: (sueldoBruto - taxBracket.limiteInferior).toFixed(2), 
-    //   tasaISR: taxBracket.tasa.toFixed(2),
-    //   impuestoMarginal: impuestoMarginal.toFixed(2),
-    //   impuestoISR: impuestoISR.toFixed(2),
-    //   cuotaFijaISR: taxBracket.cuotaFija.toFixed(2),
-    //   impuestoIMSS: impuestoIMSS,
-    //   subsidioEmpleo: subsidioEmpleo.toFixed(2),
-    //   sueldoNeto: sueldoNeto.toFixed(2),
-    // };
 
     return {
       limiteInferior: formatNumber(taxBracket.limiteInferior),
