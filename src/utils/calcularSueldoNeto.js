@@ -55,9 +55,44 @@ const tablaISR = [
     }
 
   
-   // Calcular IMSS (asumiendo un porcentaje del sueldo bruto, generalmente 6.5% para el empleado y 7.0% para el empleador)
+   // Calcular IMSS
+
+   let SAL_UMA = 103.74;
+   let SAL_EXC = SAL_UMA *3;
+
+   let DIAS_TRABAJADOS = 30;
+   let S_D = sueldoBruto/DIAS_TRABAJADOS; 
+   let S_D_I = S_D * 1.0493;  
+  
+   // MENSUAL
+   let CUOTAFIJA = 0;  
+   let EXCEDENTE_CF;  
+    if (S_D_I> SAL_EXC) {
+      EXCEDENTE_CF = (S_D_I- SAL_EXC) * DIAS_TRABAJADOS * 0.0040;
+    } else {
+      EXCEDENTE_CF = 0;
+    }
+   let PRES_DINERO = (S_D_I * DIAS_TRABAJADOS) * 0.0025;//listo
+   let GTPS_MED_PENSION =(S_D_I * DIAS_TRABAJADOS) * 0.00375;//listo
+   let INVALIDEZ_VIDA =  (S_D_I * DIAS_TRABAJADOS) * 0.00625; //listo
+   let GUARD_PRES_SOC = 0; //listo
+   let RIESGO_TRABAJO = 0;//listo
+
+   //RCYV
+
+   let RETIRO = 0;
+   let CEAV = (S_D_I * DIAS_TRABAJADOS) * 0.01125;
+
+   
+
+
+
+   let MENSUAL = CUOTAFIJA + EXCEDENTE_CF + GTPS_MED_PENSION + PRES_DINERO + INVALIDEZ_VIDA + GUARD_PRES_SOC + RIESGO_TRABAJO;
+   let RCYV = RETIRO + CEAV;
+   let INFONAVIT = 0;
+
   if (incluirIMSS) {
-    impuestoIMSS = sueldoBruto * 0.065; // Tasa del 6.5% para el empleado
+    impuestoIMSS = RCYV + INFONAVIT + MENSUAL;
   }
 
 

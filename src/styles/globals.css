@@ -33,6 +33,11 @@ form {
 
 .input-group {
   margin-bottom: 10px;
+  
+}
+
+.text-periodo{
+  text-align: center;
 }
 
 label {
@@ -145,6 +150,12 @@ ul{
   font-size: 17px;
 }
 
+/* Colocar el último elemento en el centro */
+li:last-child {
+  grid-column: 2; 
+  grid-row: 3; 
+}
+
 .resultado{
   display: flex;
   flex-direction: column;
@@ -167,19 +178,143 @@ label{
 
 .periodo{
   background-color: #10c998;
-  padding: 1rem;
+  padding: 0.6rem;
   border-radius: 50px;
   color: white;
-}
-input[type="radio"] {
-  appearance: none;
-  -moz-appearance: none;
-  -webkit-appearance: none;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap:8rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Box shadow con ligera sombra */
 
 }
+
 
 .label-periodo{
   color: white;
-  margin-right: 2rem;
+  font-weight: 600;
+  font-size: 18px;
 }
 
+input{
+  outline: none;
+
+}
+
+
+.radio{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 1rem;
+}
+
+
+
+/* Hide the default checkbox */
+.container_checkbox input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+ }
+ 
+ .container_checkbox {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  font-size: 18px;
+  user-select: none;
+ }
+
+ .label_checkbox{
+  font-size: 16px;
+
+ }
+ 
+ /* Create a custom checkbox */
+ .checkmark {
+  position: relative;
+  top: 0;
+  left: 0;
+  height: 1.3em;
+  width: 1.3em;
+  background: black;
+  border-radius: 50px;
+  transition: all 0.7s;
+  --spread: 20px;
+ }
+ 
+ /* When the checkbox is checked, add a blue background */
+ .container_checkbox input:checked ~ .checkmark {
+  background: black;
+  box-shadow: -10px -10px var(--spread) 0px #10c998, 0 -10px var(--spread) 0px #22a887, 10px -10px var(--spread) 0px #33b576, 10px 0 var(--spread) 0px #55c065, 10px 10px var(--spread) 0px #77d154, 0 10px var(--spread) 0px #99e143, -10px 10px var(--spread) 0px #baf932;
+ }
+ 
+ /* Create the checkmark/indicator (hidden when not checked) */
+ .checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+ }
+ 
+ /* Show the checkmark when checked */
+ .container_checkbox input:checked ~ .checkmark:after {
+  display: block;
+ }
+ 
+ /* Style the checkmark/indicator */
+ .container_checkbox .checkmark:after {
+  left: 0.45em;
+  top: 0.25em;
+  width: 0.25em;
+  height: 0.5em;
+  border: solid #f0f0f0;
+  border-width: 0 0.15em 0.15em 0;
+  transform: rotate(45deg);
+ }
+
+ 
+ 
+/* media queries for tablet */
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+
+  .resultado_neto_value{
+    font-size: 4.5rem;
+  } 
+
+  ul {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+}
+
+
+/* media queries for mobile */
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+
+
+  .resultado_neto_value{
+    font-size: 3.5rem;
+  }
+
+  
+
+  .periodo {
+    flex-direction: row;
+    gap: 0.8rem;
+  }
+
+  
+  
+
+  ul {
+    grid-template-columns: 1fr;
+   
+  }
+
+  
+}
