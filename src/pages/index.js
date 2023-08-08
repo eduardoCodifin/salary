@@ -30,15 +30,11 @@ export default function Home() {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    // Convertimos el sueldo bruto ingresado a número
-
-    const sueldo = parseFloat(sueldoBruto);
-    
+      e.preventDefault();
+      const sueldo = parseFloat(sueldoBruto);  
       const result = calcularSueldoNeto(periodo, sueldo, incluirIMSS, incluirSubsidio);
       setResultado(result);
     
-    console.log(result)
   };
 
 
@@ -48,10 +44,10 @@ export default function Home() {
       const sueldo = parseFloat(sueldoBruto);
       const result = calcularSueldoNeto(periodo, sueldo, incluirIMSS, incluirSubsidio);
       setResultado(result);
-    }
 
+    }
     
-  }, [periodo, sueldoBruto, incluirIMSS, incluirSubsidio]);
+  }, []);
 
 
 
@@ -132,6 +128,10 @@ export default function Home() {
               </div>
             
             </div>  
+
+            <button type="submit" className="submit-button">
+              Calcular
+            </button>
 
             
          </form>
