@@ -55,6 +55,9 @@ const tablaISR = [
       }
     }
 
+
+    
+
   
    // Calcular IMSS
 
@@ -123,6 +126,11 @@ const tablaISR = [
           break;
         }
       }
+
+
+   
+
+
 
 
    // Format numbers with commas
