@@ -9,7 +9,7 @@ export default function Home() {
   const [periodo, setPeriodo] = useState('Mensual');
   // const [sueldoBruto, setSueldoBruto] = useState('');
   const [sueldoBruto, setSueldoBruto] = useState('10000');
-  const [incluirIMSS, setIncluirIMSS] = useState(false);
+  const [incluirIMSS, setIncluirIMSS] = useState(true);
   const [incluirSubsidio, setIncluirSubsidio] = useState(false);
   const [resultados, setResultado] = useState(null);
 
@@ -32,7 +32,7 @@ export default function Home() {
   const handleSubmit = (e) => {
       e.preventDefault();
       const sueldo = parseFloat(sueldoBruto);  
-      const result = calcularSueldoNeto(periodo, sueldo, incluirIMSS, incluirSubsidio);
+      const result = calcularSueldoNeto(periodo, sueldo, true, incluirSubsidio);
       setResultado(result);
     
   };
@@ -119,20 +119,15 @@ export default function Home() {
 
 
 
-              {/* <div className="input-group">
-                <label>
-                  <input type="checkbox" checked={incluirIMSS} onChange={handleIncluirIMSSChange} />
-                  Incluir IMSS
-                </label>
-              </div> */}
+            
 
-              <div className="input-group">
+              {/* <div className="input-group">
                 <label className="container_checkbox">
                   <span className="label_checkbox">Incluir IMSS</span>
                   <input type="checkbox" checked={incluirIMSS} onChange={handleIncluirIMSSChange} />
                   <div className="checkmark"></div>
                 </label>    
-              </div>
+              </div> */}
             
             </div>  
 
