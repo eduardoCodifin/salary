@@ -2,6 +2,7 @@ import React, { useState, useEffect} from 'react';
 import Head from 'next/head'
 import calcularSueldoNeto from '@/utils/calcularSueldoNeto';
 import CurrencyInput from 'react-currency-input-field';
+import NavBar from '@/components/NavBar';
 
 
 export default function Home() {
@@ -68,13 +69,15 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
      
       </Head>
+
+      <NavBar /> 
+
       <div className="container">
 
         <div className="content">
           <form onSubmit={handleSubmit} className='form'>
             <div className="text">
               <div className="input-group">
-                <label className="text_periodo" >Selecciona período:</label>
                 <div className='periodo'>
                   <span className={`label-periodo ${periodo === "Semanal" ? 'active' : ''}`} onClick={() => setPeriodo('Semanal')}>
                     Semanal
@@ -92,7 +95,7 @@ export default function Home() {
 
                 .active {
                   background-color: #ffff;
-                  color: #10c998;
+                  color: #010d2d;
                   padding: 8px 16px;
                   border-radius: 50px;
                   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
