@@ -50,16 +50,14 @@ export default function Home() {
     
   }, []);
 
+  
+
   const resultadoNeto = resultados?.sueldoNeto; // Asumiendo que resultadoNeto es una cadena
   const cleanedResultadoNeto = resultadoNeto?.replace(',', '').replace('.', '.');
   const sueldoNetoNumero = parseFloat(cleanedResultadoNeto);
-  console.log(sueldoNetoNumero); // Debería imprimir 9229.1 correctamente
+
+
   
-
-
-
-
-
 
   return (
     <>
@@ -147,9 +145,11 @@ export default function Home() {
               <h3 className='resultado_neto'>Sueldo neto</h3>
               <h3 className='resultado_neto_value'>
                 $ {resultados && (
-                  periodo === 'Mensual' ? sueldoNetoNumero.toFixed(2) :
-                  periodo === 'Semanal' ? (sueldoNetoNumero / 4).toFixed(2) :
-                  (sueldoNetoNumero / 2).toFixed(2))}
+                  periodo === 'Mensual' ? resultadoNeto :
+                  periodo === 'Semanal' ? (sueldoNetoNumero / 4).toLocaleString('en', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) :
+                  (sueldoNetoNumero / 2).toLocaleString('en', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+                 )  
+                  }
               </h3>              
             </div>
 
