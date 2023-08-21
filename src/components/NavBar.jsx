@@ -13,7 +13,7 @@ const NavBar = () => {
         </Link>
       </div>
       <div className="cta-button">
-         <Link href="https://api.whatsapp.com/send?phone=5215541817644&text=Hola%2C%20estoy%20interesado%20en%20sus%20servicios." target="_blank" rel="noopener noreferrer">
+         <Link href="https://codifin-form-companies.vercel.app/" target="_blank" rel="noopener noreferrer">
           <button className="cta-btn">Contáctanos</button>
         </Link>      
       </div>
