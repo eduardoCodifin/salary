@@ -3,6 +3,8 @@ import Head from 'next/head'
 import calcularSueldoNeto from '@/utils/calcularSueldoNeto';
 import CurrencyInput from 'react-currency-input-field';
 import NavBar from '@/components/NavBar';
+import Seo from '@/components/seo';
+
 
 
 export default function Home() {
@@ -61,12 +63,11 @@ export default function Home() {
 
   return (
     <>
-      <Head>
-        <title>Calculadora</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-     
-      </Head>
+     <Seo
+        title="Calculadora salarios Mexico: Bruto a Neto        "
+        description="Calculadora de Impuestos México. Con esta calculadora podrás determinar tu sueldo neto o bruto, calculando tu salario después de aplicar los impuestos con las nuevas tarifas de ISR y del IMSS."
+        siteName="Codifin"
+      />
 
       <NavBar /> 
 
@@ -173,6 +174,8 @@ export default function Home() {
 
      
     </div>
+
+    
 
    
 
